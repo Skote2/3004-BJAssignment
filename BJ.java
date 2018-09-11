@@ -14,10 +14,6 @@ public class BJ
 {
     public static void main (String args[])
     {
-        Deck d1 = new Deck();
-        Deck d2 = new Deck(true);
-
-        System.out.println("Shuffled Deck:\n" + d1.toString());
-        System.out.println("Sorted Deck:\n" + d2.toString());
+        
     }
 }

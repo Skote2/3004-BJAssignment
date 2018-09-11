@@ -7,7 +7,8 @@ JC = javac
 CLASSES = \
 	BJ.java \
 	Card.java \
-	Deck.java
+	Deck.java \
+	UI.java
 
 default: classes
 

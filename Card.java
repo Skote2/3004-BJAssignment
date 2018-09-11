@@ -10,8 +10,8 @@
  */
 public class Card
 {
-    public static char[] Suits = {'A', 'S', 'H', 'C'};
-    public static String[] Faces = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
+    public static char[] Suits = {'D', 'S', 'H', 'C'};
+    public static String[] Faces = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
     
     private char s; //suit
     private String f;//face
@@ -25,6 +25,7 @@ public class Card
         f = face;
     }
 
+    @Override
     public String toString() {
         return s + f;
     }

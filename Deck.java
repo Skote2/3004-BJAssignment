@@ -6,7 +6,7 @@
  * David N. Zilio
  * 10/Sep/2018
  * 
- * A Class for standard playing Cards
+ * A collection class to manage cards as a deck.
  */
 import java.util.Stack;
 import java.util.Collections;
@@ -15,23 +15,16 @@ public class Deck
 {
     private Stack<Card> cards;
 
-    public Deck () {
-        buildDeck();
-        Collections.shuffle(cards);
-    }
+    public Deck () { Deck(false); }
     public Deck (boolean sorted){
         buildDeck();
         if (!sorted)
             Collections.shuffle(cards);
     }
 
-    private void buildDeck(){
-        cards = new Stack<Card>();
-        for (char s : Card.Suits)
-            for (String f : Card.Faces)
-                cards.push(new Card(s, f));
-    }
+    public Card draw () { return cards.pop(); }
 
+    @Override
     public String toString() {
         String s = "";
         for (Card c : cards)
