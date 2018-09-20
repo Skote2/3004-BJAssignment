@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "blackjack",
+                "projectName": "blackjack",
+                "workingDirectory": "/home/dzilio/Documents/University/COMP 3004/3004-BJAssignment/blackjack",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "blackjack",
+                "projectName": "blackjack",
+                "workingDirectory": "/home/dzilio/Documents/University/COMP 3004/3004-BJAssignment/blackjack",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}
