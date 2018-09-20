@@ -18,8 +18,7 @@ public class UI {
     public void close () { input.close(); }
     public void finalize() { input.close(); }
 
-    public char getChar (char[] options, String[] message)
-    {
+    public char getChar (char[] options, String[] message) {
         char answer = '0';
         boolean answered = false;
         while (!answered) {
@@ -37,11 +36,13 @@ public class UI {
         
         return answer;
     }
-
     public String getString(String message) {
         System.out.println(message);
         String in = input.nextLine();
         
         return in;    
+    }
+    public void display(String displayText) {
+        System.out.println(displayText);
     }
 }

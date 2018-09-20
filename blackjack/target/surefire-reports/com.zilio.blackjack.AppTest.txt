@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.zilio.blackjack.AppTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in com.zilio.blackjack.AppTest
+Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.003 s <<< FAILURE! - in com.zilio.blackjack.AppTest
+BJGameTest(com.zilio.blackjack.AppTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.zilio.blackjack.AppTest.BJGameTest(AppTest.java:79)
+

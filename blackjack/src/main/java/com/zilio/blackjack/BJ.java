@@ -18,24 +18,47 @@ public class BJ
 {
     public static final byte MAX_VALUE = 21;
     
-    public static boolean game (UI view, Stack<String> lines) {
-        Deck d = new Deck();
-        Player p = new Player();
-        String input = nextInput(view, lines, "asdf");
+    private Deck            deck;
+    private Player          player;
+    private Player          dealer;
+    private UI              view;
+    private Stack<String>   lines;
+    private boolean         show;
+
+    public BJ (UI v, Stack<String> fileText) {
+        deck    = new Deck();
+        Card[] c= {deck.draw(), deck.draw()};
+        player  = new Player(c);
+        c[0]    = deck.draw();
+        c[1]    = deck.draw();
+        dealer  = new Player(c);
+        view    = v;
+        show    = false;
+    }
+
+    public boolean game () {
+        showBoard();
+        
+        String input = nextInput("asdf");
 
         while (!input.equals("quit") && input != null){
             System.out.println(input);
-            input = nextInput(view, lines, "asd");
+            input = nextInput("asd");
         }
         
         return true;
     }
 
-    private static String nextInput(UI view, Stack<String> lines, String message) {
+    private String nextInput(String message) {
         if (lines == null)
             return view.getString(message);
         if (lines.isEmpty())
             return null;
         return lines.pop();
+    }
+
+    private void showBoard() {
+        view.display("Player's hand: " + player.getHand());
+        view.display("Dealer's hand: " + dealer.getHand(show));
     }
 }

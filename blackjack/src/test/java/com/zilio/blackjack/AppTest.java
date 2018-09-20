@@ -70,4 +70,12 @@ public class AppTest
         assertTrue(p1.getValue() == 13);
         assertTrue(!p1.checkBust());
     }
+
+    @Test
+    public void BJGameTest () {
+        UI view = new UI();
+        BJ blackjack = new BJ(view, null);
+
+        //assertTrue(blackjack.game());
+    }
 }

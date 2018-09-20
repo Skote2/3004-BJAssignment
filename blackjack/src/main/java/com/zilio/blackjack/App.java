@@ -25,7 +25,9 @@ public class App
         if (inputMethod == option[1])//file
             lines = readFromFile.getFileStrings(view);
         
-        BJ.game(view, lines);
+        BJ blackjack = new BJ(view, lines);
+
+        blackjack.game();
 
         view.close();
     }

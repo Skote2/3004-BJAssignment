@@ -31,7 +31,7 @@ public class Player
     public boolean checkBust() {
         if (getValue() > BJ.MAX_VALUE)
             return true;
-        return false;
+        return false;//not busted
     }
     public String getHand() { 
         String s = "[";
@@ -40,7 +40,19 @@ public class Player
             if (i != handSize-1)
                 s += ", ";
         }
-        return s + ']';
+        return s + "]";
+    }
+    public String getHand(boolean dealer) { 
+        String s = "[";
+        for (int i = 0; i < handSize; i++) {
+            if (i < 1 | !dealer)
+                s += hand[i].toString();
+            else
+                s+= "XX";
+            if (i != handSize-1)
+                s += ", ";
+        }
+        return s + "]";
     }
     public byte getValue() {
         byte val = 0;
