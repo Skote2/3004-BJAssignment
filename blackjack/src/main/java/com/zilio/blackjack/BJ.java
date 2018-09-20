@@ -38,14 +38,47 @@ public class BJ
 
     public boolean game () {
         showBoard();
+        char[] option = {'h', 's', 'q'};
+        String[] message = {"Hit", "Stand", "Quit"};
+        char input;
+        do{//player's turn
+            input = nextInput(option, message);
+            if (input == 'h')
+                player.hit(deck.draw());
+            showBoard();
+        }while(input != 'q' && input != 's' && !player.checkBust());
         
-        String input = nextInput("asdf");
 
-        while (!input.equals("quit") && input != null){
-            System.out.println(input);
-            input = nextInput("asd");
+        show = true;
+        if (!player.checkBust()) {
+            do{//dealers turn
+                input = (dealer.getValue() <= 16 || dealer.checkSoft17() ? 'h' : 's');
+                if (input == 'h')
+                    dealer.hit(deck.draw());
+                showBoard();
+            }while(input != 'q' && input != 's' && !dealer.checkBust());
+
+            if (dealer.checkBust())
+                view.display("Player Wins, Dealer busted");
+            else {
+                if (dealer.checkBlackJack()) {
+                    view.display("Dealer Wins, Bslackjack!");
+                }
+                else if (player.checkBlackJack()) {
+                    view.display("Player Wins, Blackjack!");
+                }
+                else {
+                    if (dealer.getValue() >= player.getValue())
+                        view.display("Dealer Wins");
+                    else
+                        view.display("Player Wins");
+                }
+            }
         }
-        
+        else
+            view.display("Dealer Wins, Player busted");
+        view.display("Player Score: " + player.getValue() + "\nDealer Score: " + dealer.getValue());
+
         return true;
     }
 
@@ -56,9 +89,16 @@ public class BJ
             return null;
         return lines.pop();
     }
+    private char nextInput(char[] options, String[] message) {
+        //if (lines == null)
+        return view.getChar(options, message);
+        //if (lines.isEmpty())
+        //    return 's';
+        //return lines.pop();
+    }
 
     private void showBoard() {
-        view.display("Player's hand: " + player.getHand());
+        view.display("\nPlayer's hand: " + player.getHand() + "\nScore: " + player.getValue());
         view.display("Dealer's hand: " + dealer.getHand(show));
     }
 }

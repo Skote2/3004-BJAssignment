@@ -28,10 +28,37 @@ public class Player
         start(cards);
     }
 
+    public boolean checkBlackJack() {
+        boolean ace = false;
+        boolean tenPointer = false;
+        for (int i = 0; i < handSize; i++) {
+            if (hand[i].getFace().equals("A"))
+                ace = true;
+            else if (hand[i].getFace().equals("K") || hand[i].getFace().equals("Q") || hand[i].getFace().equals("J") || hand[i].getFace().equals("10"))
+                tenPointer = true;
+        }
+        return ace && tenPointer;
+    }
     public boolean checkBust() {
         if (getValue() > BJ.MAX_VALUE)
             return true;
         return false;//not busted
+    }
+    public boolean checkSoft17 () {
+        byte val = 0;
+        byte aces = 0;
+        for (int i = 0; i < handSize; i++)
+            if (hand[i].getValue() == 11)
+                aces++;
+            else
+                val += hand[i].getValue();
+        for (byte i = 0; i < aces; i++)
+            if (val + 11 > BJ.MAX_VALUE)
+                val += 1;
+            else
+                return true;
+
+        return false;
     }
     public String getHand() { 
         String s = "[";
@@ -42,13 +69,13 @@ public class Player
         }
         return s + "]";
     }
-    public String getHand(boolean dealer) { 
+    public String getHand(boolean showDealer) { 
         String s = "[";
         for (int i = 0; i < handSize; i++) {
-            if (i < 1 | !dealer)
+            if (i < 1 | showDealer){
                 s += hand[i].toString();
-            else
-                s+= "XX";
+            }
+            else { s+= "XX"; }
             if (i != handSize-1)
                 s += ", ";
         }

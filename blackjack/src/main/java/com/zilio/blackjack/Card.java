@@ -30,6 +30,8 @@ public class Card
         s = suit;
         f = face;
     }
+    public String getFace() { return f; }
+    public char getSuit() { return s; }
 
     @Override
     public String toString() { return s + f; }
